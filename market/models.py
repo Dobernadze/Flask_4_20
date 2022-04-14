@@ -16,6 +16,14 @@ class User(db.Model, UserMixin):
     
     
     @property
+    def prettier_budgets(self):
+        if len(str(self.budgets)) >= 4:
+            return f'{str(self.budget)[:-3]},{str(self.budget)[-3:]}$'
+        else:
+            return f"{self.budgets}$"
+    
+    
+    @property
     def password(self):
         return self.password
 
